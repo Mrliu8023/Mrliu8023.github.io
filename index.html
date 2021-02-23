@@ -1,382 +1,417 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN" data-default-color-scheme=&#34;auto&#34;>
+
+
+
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" type="image/png" href="/img/favicon.png">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
   
-  
-  <title>CatUnderCar</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="theme-color" content="#2f4154">
   <meta name="description" content="go">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CatUnderCar">
-<meta property="og:url" content="https://mrliu8023.github.io/index.html">
-<meta property="og:site_name" content="CatUnderCar">
-<meta property="og:description" content="go">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:author" content="CatUnderCar">
-<meta property="article:tag" content="go">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="CatUnderCar" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <meta name="author" content="CatUnderCar">
+  <meta name="keywords" content="go">
+  <title>CatUnderCar</title>
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" />
 
-  
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
 
-  
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"mrliu8023.github.io","root":"/","version":"1.8.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"onlypost":false},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null}}};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.0"></head>
 
+
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">CatUnderCar</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">道阻且长，行则将至</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand"
+       href="/">&nbsp;<strong>Fluid</strong>&nbsp;</a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
         
-          <a class="main-nav-link" href="/">Home</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
         
-          <a class="main-nav-link" href="/archives">Archives</a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
         
-      </nav>
-      <nav id="sub-nav">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
         
-        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://mrliu8023.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-
-      <div class="outer">
-        <section id="main">
-  
-    <article id="post-Go-Memory-Model" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/02/23/Go-Memory-Model/" class="article-date">
-  <time class="dt-published" datetime="2021-02-23T15:35:29.000Z" itemprop="datePublished">2021-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/02/23/Go-Memory-Model/">Go Memory Model</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="Go-Memory-Model"><a href="#Go-Memory-Model" class="headerlink" title="Go Memory Model"></a>Go Memory Model</h1><h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>如何保证在一个goruntine中看到在另一个goroutine修改的变量的值</p>
-<p>如果程序中修改数据时有其他goroutine同时读取，那么必须将读取串行化。为了串行化访问，请使用channel或其他同步原语，例如sync和sync/atomic来保护数据。</p>
-<h2 id="Happens-Before"><a href="#Happens-Before" class="headerlink" title="Happens Before"></a>Happens Before</h2><p>在一个gouroutine中，读和写一定是按照程序中的顺序执行的。即编译器和处理器只有在不会改变这个goroutine的行为时才可能修改读和写的执行顺序。<strong>由于重排，不同的goroutine可能会看到不同的执行顺序。</strong>例如，一个goroutine执行<code>a = 1;b = 2;</code>，另一个goroutine可能看到<code>b</code>在<code>a</code>之前更新。</p>
-<p>为了说明读和写的必要条件，我们定义了<code>先行发生（Happens Before）</code>–Go程序中执行内存操作的偏序。如果事件<code>e1</code>发生在<code>e2</code>前，我们可以说<code>e2</code>发生在<code>e1</code>后。如果<code>e1</code>不发生在<code>e2</code>前也不发生在<code>e2</code>后，我们就说<code>e1</code>和<code>e2</code>是并发的。</p>
-<h3 id="内存重排"><a href="#内存重排" class="headerlink" title="内存重排"></a>内存重排</h3><ul>
-<li>CPU重排</li>
-</ul>
-<p><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/MESI%E5%8D%8F%E8%AE%AE">MESI</a></p>
-<ul>
-<li>编译器重排</li>
-</ul>
-<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>程序的初始化在单独的goroutine中进行，但这个goroutine可能会创建出并发执行的其他goroutine。</p>
-<p><em>If a package <code>p</code> imports package <code>q</code>, the completion of <code>q</code>‘s <code>init</code> functions happens before the start of any of <code>p</code>‘s.</em></p>
-<p><em>The start of the function <code>main.main</code> happens after all <code>init</code> functions have finished.</em></p>
-<p><strong><em>如果包p引入（import）包q，那么q的init函数的结束先行发生于p的所有init函数开始</em></strong> 。</p>
-<p><strong><em>main.main函数的开始发生在所有init函数结束之后</em></strong></p>
-<h3 id="创建goroutine"><a href="#创建goroutine" class="headerlink" title="创建goroutine"></a>创建goroutine</h3><p>The go statement that starts a new goroutine happens before the goroutine’s execution begins.</p>
-<p>启动一个goroutine的语句先行发生于goroutine的执行。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// will print &quot;Hello, World&quot; at some point in the future (perhaps after main has returned)</span></span><br><span class="line">	a := <span class="string">&quot;Hello World&quot;</span></span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">		<span class="built_in">print</span>(a)</span><br><span class="line">	&#125;()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>will print “Hello, World” at some point in the future (perhaps after <em>main</em> has returned)</p>
-<h3 id="销毁goroutine"><a href="#销毁goroutine" class="headerlink" title="销毁goroutine"></a>销毁goroutine</h3><p>gouroutine的退出并不会保证先行发生于程序的任何事件。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">hello</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; a = <span class="string">&quot;hello&quot;</span> &#125;()</span><br><span class="line">	<span class="built_in">print</span>(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>对变量<code>a</code> 的赋值之后没有任何同步事件，所以不能保证变量<code>a</code> 对其他goroutine可见。实际上，一个激进的编译器可能会删掉整个<code>go</code> 语句。</p>
-<h3 id="Channel"><a href="#Channel" class="headerlink" title="Channel"></a>Channel</h3><p>channel通信是goroutine同步的主要方法。每一个在特定channel的发送操作都会匹配到通常在另一个goroutine执行的接收操作。</p>
-<ul>
-<li><em>A send on a channel happens before the corresponding receive from that channel completes.</em></li>
-</ul>
-<p><em>对channel的发送操作先行发生于<strong>对应的</strong>接收操作完成。</em></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>, <span class="number">10</span>)</span><br><span class="line"><span class="keyword">var</span> a <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a = <span class="string">&quot;hello, world&quot;</span></span><br><span class="line">	c &lt;- <span class="number">0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> f()</span><br><span class="line">	&lt;-c</span><br><span class="line">	<span class="built_in">print</span>(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这段程序保证了变量<code>a</code> 的赋值的可见性。<code>a</code>的赋值先行发生于<code>c &lt;- 0</code>，<code>c &lt;- 0</code>先行发生于<code>&lt;-c</code>，<code>&lt;-c</code>先行发生于<code>print(a)</code>,所以<code>a</code>的赋值先行发生于<code>print(a)</code> 。</p>
-<ul>
-<li><em>The closing of a channel happens before a receive that returns a ze ro value because the channel is closed.</em></li>
-</ul>
-<p><em>一个<code>channel</code>的关闭先行发生于它接收到一个零值，因为它已经关闭了。</em></p>
-<p>在上面的例子中，将<code>c &lt;- 0</code>替换为<code>close(c)</code>还会产生同样的结果。</p>
-<ul>
-<li><em>A receive from an unbuffered channel happens before the send on that channel completes.</em></li>
-</ul>
-<p><em>无缓冲<code>channel</code>的接收先行发生于发送完成.</em></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> c = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line"><span class="keyword">var</span> a <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a = <span class="string">&quot;hello, world&quot;</span></span><br><span class="line">	&lt;-c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> f()</span><br><span class="line">	c &lt;- <span class="number">0</span></span><br><span class="line">	<span class="built_in">print</span>(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><em>The kth receive on a channel with capacity C happens before the k+Cth send from that channel completes.</em></li>
-</ul>
-<p><em>在容量为C的channel上的第k个接收先行发生于从这个channel上的第k+C次发送完成。</em></p>
-<p>这条规则将前面的规则推广到了带缓冲的channel上。可以通过带缓冲的channel来实现计数信号量：channel中的元素数量对应着活动的数量，channel的容量表示同时活动的最大数量，发送元素获取信号量，接收元素释放信号量，这是限制并发的通常用法。</p>
-<p>下面程序为<code>work</code>中的每一项开启一个goroutine，但这些goroutine通过有限制的channel来确保最多同时执行三个工作函数（w）。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> limit = <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>, <span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">for</span> _, w := <span class="keyword">range</span> work &#123;</span><br><span class="line">		<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">(w <span class="keyword">func</span>()</span>)</span> &#123;</span><br><span class="line">			limit &lt;- <span class="number">1</span></span><br><span class="line">			w()</span><br><span class="line">			&lt;-limit</span><br><span class="line">		&#125;(w)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">select</span>&#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h3 id="锁"><a href="#锁" class="headerlink" title="锁"></a>锁</h3><p>sync包实现了两个锁的数据类型<code>sync.Mutex</code>和<code>sync.RWMutex</code>。</p>
-<ul>
-<li><em>For any sync.Mutex or sync.RWMutex variable l and n &lt; m, call n of l.Unlock() happens before call m of l.Lock() returns.</em></li>
-</ul>
-<p><em>对任意的sync.Mutex或sync.RWMutex变量l和n &lt; m，n次调用l.Unlock()先行发生于m次l.Lock()返回。</em></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> l sync.Mutex</span><br><span class="line"><span class="keyword">var</span> a <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a = <span class="string">&quot;hello, world&quot;</span></span><br><span class="line">	l.Unlock()</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	l.Lock()</span><br><span class="line">	<span class="keyword">go</span> f()</span><br><span class="line">	l.Lock()</span><br><span class="line">	<span class="built_in">print</span>(a)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>能保证打印出”hello, world”。第一次调用l.Unlock()（在f()中）先行发生于main中的第二次l.Lock()返回, 先行发生于print。</p>
-<ul>
-<li><em>For any call to l.RLock on a sync.RWMutex variable l, there is an n such that the l.RLock happens (returns) after call n to l.Unlock and the matching l.RUnlock happens before call n+1 to l.Lock.</em></li>
-</ul>
-<p><em>对于sync.RWMutex变量l，任意的函数调用l.RLock满足第n次l.RLock<strong>后发生于</strong>第n次调用l.Unlock，对应的l.RUnlock先行发生于第n+1次调用l.Lock。</em></p>
-<h3 id="Once"><a href="#Once" class="headerlink" title="Once"></a>Once</h3><p>sync包的Once为多个goroutine提供了安全的初始化机制。能在多个线程中执行once.Do(f)，但只有一个f()会执行，其他调用会一直阻塞直到f()返回。</p>
-<p><em>A single call of f() from <a target="_blank" rel="noopener" href="http://once.do/">once.Do</a>(f) happens (returns) before any call of <a target="_blank" rel="noopener" href="http://once.do/">once.Do</a>(f) returns.</em></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a <span class="keyword">string</span></span><br><span class="line"><span class="keyword">var</span> once sync.Once</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">setup</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a = <span class="string">&quot;hello, world&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">doprint</span><span class="params">()</span></span> &#123;</span><br><span class="line">	once.Do(setup)</span><br><span class="line">	<span class="built_in">print</span>(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">twoprint</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> doprint()</span><br><span class="line">	<span class="keyword">go</span> doprint()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>调用<code>twoprint</code>会打印*”hello, world”*两次。<code>setup</code>只在第一次<code>doprint</code>时执行。</p>
-<h3 id="错误的同步方法"><a href="#错误的同步方法" class="headerlink" title="错误的同步方法"></a>错误的同步方法</h3><p>注意，读操作*<strong>r**<em>可能会看到并发的写操作</em></strong>w*<strong>。即使这样也不能表明**<em>r</em></strong>之后的读能看到**<em>w**</em>之前的写。</p>
-<p>如下程序：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a, b <span class="keyword">int</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">f</span><span class="params">()</span></span> &#123;</span><br><span class="line">	a = <span class="number">1</span></span><br><span class="line">	b = <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">g</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="built_in">print</span>(b)</span><br><span class="line">	<span class="built_in">print</span>(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="keyword">go</span> f()</span><br><span class="line">	g()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p><code>g</code>可能先打印出2然后是0。</p>
-<p><img src="D:\go\src\CS-Study\pics\golang\Go-Memory-Model.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://mrliu8023.github.io/2021/02/23/Go-Memory-Model/" data-id="ckli6erd700007ktlbp1mfcv0" data-title="Go Memory Model" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/" rel="tag">go</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-embed-in-go" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/02/23/embed-in-go/" class="article-date">
-  <time class="dt-published" datetime="2021-02-23T15:35:15.000Z" itemprop="datePublished">2021-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
         
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2021/02/23/embed-in-go/">embed in go</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="pkg-embed-in-go"><a href="#pkg-embed-in-go" class="headerlink" title="pkg embed in go"></a>pkg embed in go</h1><p>embed包 提供了访问正在运行的go程序的功能。</p>
-<ul>
-<li>嵌入一个文件到string</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> _ <span class="string">&quot;embed&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//go:embed hello.txt</span></span><br><span class="line"><span class="keyword">var</span> s <span class="keyword">string</span></span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>嵌入一个文件到一个字节切片</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> _ <span class="string">&quot;embed&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//go:embed hello.txt</span></span><br><span class="line"><span class="keyword">var</span> b []<span class="keyword">byte</span></span><br><span class="line"><span class="built_in">print</span>(<span class="keyword">string</span>(b))</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>嵌入一个或多个文件作为一个文件系统</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;embed&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//go:embed hello.txt</span></span><br><span class="line"><span class="keyword">var</span> f embed.FS</span><br><span class="line">data, _ := f.ReadFile(<span class="string">&quot;hello.txt&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="keyword">string</span>(data))</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h2><p>变量声明上面的<code>go:embed</code>指令使用一个或多个路径指定要嵌入的文件。匹配模式。</p>
-<p>该指令必须紧接在包含单个变量声明的行之前。 指令和声明之间仅允许使用<strong>空行</strong>和**<code>//</code>**行注释。</p>
-<p>变量的类型必须是这三种的其中一个<code>string</code>, <code>[]byte</code>, <code>FS</code>(或者FS的别名)。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> server</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;embed&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// content holds our static web server content.</span></span><br><span class="line"><span class="comment">//go:embed image/* template/*</span></span><br><span class="line"><span class="comment">//go:embed html/index.html</span></span><br><span class="line"><span class="keyword">var</span> content embed.FS</span><br></pre></td></tr></table></figure>
-
-<p><code>//go:embed</code>指令为简洁起见接受多个空格分隔的模式，但它也可以重复，以避免有许多模式时出现很长的行。模式是相对于包含源文件的包目录进行解释的。即使在windows上，路径分隔符也是<code>/</code>(forward slash)。模式不能包含<code>.</code>或<code>..</code>或空路径元素，也不能以<code>/</code>开头或者结尾。使用<code>*</code>来匹配当前路径下的所有内容。为了允许命名名称中有空格的文件，可以将模式写为Go的双引号<code>&quot;&quot;</code>或者反引号```` ``字符串文本</p>
-<p>如果一个模式命名为一个目录，则该目录下的子树中所有文件都将被递归嵌入，但是名称以<code>.</code>（隐藏文件）或<code>\</code>开头的文件除外。所以上面例子中的变量几乎等价于：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// content is our static web server content.</span></span><br><span class="line"><span class="comment">//go:embed image template html/index.html</span></span><br><span class="line"><span class="keyword">var</span> content embed.FS</span><br></pre></td></tr></table></figure>
-
-<p>区别就是<code>image/*</code>嵌入了<code>image/.tempfile</code>,但是<code>image</code>没有。</p>
-<p><code>//go:embed</code>指令可以与导出和未导出的变量一起使用，具体取决于软件包是否希望使数据可用于其他软件包。 它只能与程序包范围的全局变量一起使用，而<strong>不能与局部变量一起使用</strong>。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Partial</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//go:embed test.txt</span></span><br><span class="line">    vat a <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编译将会报错：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//go:embed only allowed in Go files that import &quot;embed&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>模式不得与包模块外部的文件匹配，例如<code> .git/*</code>或符号链接。 空目录的匹配将被忽略。 之后，<code>//go:embed</code>行中的每个模式必须至少匹配一个文件或非空目录。</p>
-<p>如果<strong>任何模式无效或匹配无效</strong>，则构建将失败。</p>
-<h3 id="File-System"><a href="#File-System" class="headerlink" title="File System"></a>File System</h3><p><code>FS</code>实现了<code>io/fs</code>包的<code>FS</code>接口，所以它能在任何理解文件系统的包内使用,包括<code>net/http</code>, <code>text/template</code>, 和<code>html/template</code>。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http.Handle(<span class="string">&quot;/static/&quot;</span>,http.StripPrefix(<span class="string">&quot;/static/&quot;</span>,http.FileServer(http.FS(content))))</span><br><span class="line"></span><br><span class="line">template.ParseFS(content, <span class="string">&quot;*.tmpl&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="无效模式"><a href="#无效模式" class="headerlink" title="无效模式"></a>无效模式</h2><p><a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/44486">https://github.com/golang/go/issues/44486</a></p>
-<p>embed的有效文件名不能为<code>.git</code>, <code>.hg</code>, <code>.bzr</code>, <code>.svn</code>，并且不能包含<code>* &lt; &gt; ? ` &#39; | / \ : </code>等在某些Shell或操作系统中具有特殊含义的符号。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// isBadEmbedName reports whether name is the base name of a file that</span></span><br><span class="line"><span class="comment">// can&#x27;t or won&#x27;t be included in modules and therefore shouldn&#x27;t be treated</span></span><br><span class="line"><span class="comment">// as existing for embedding.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isBadEmbedName</span><span class="params">(name <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> err := module.CheckFilePath(name); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">switch</span> name &#123;</span><br><span class="line">	<span class="comment">// Empty string should be impossible but make it bad.</span></span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;&quot;</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	<span class="comment">// Version control directories won&#x27;t be present in module.</span></span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;.bzr&quot;</span>, <span class="string">&quot;.hg&quot;</span>, <span class="string">&quot;.git&quot;</span>, <span class="string">&quot;.svn&quot;</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CheckFilePath checks that a slash-separated file path is valid.</span></span><br><span class="line"><span class="comment">// The definition of a valid file path is the same as the definition</span></span><br><span class="line"><span class="comment">// of a valid import path except that the set of allowed characters is larger:</span></span><br><span class="line"><span class="comment">// all Unicode letters, ASCII digits, the ASCII space character (U+0020),</span></span><br><span class="line"><span class="comment">// and the ASCII punctuation characters</span></span><br><span class="line"><span class="comment">// “!#$%&amp;()+,-.=@[]^_&#123;&#125;~”.</span></span><br><span class="line"><span class="comment">// (The excluded punctuation characters, &quot; * &lt; &gt; ? ` &#x27; | / \ and :,</span></span><br><span class="line"><span class="comment">// have special meanings in certain shells or operating systems.)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// CheckFilePath may be less restrictive in the future, but see the</span></span><br><span class="line"><span class="comment">// top-level package documentation for additional information about</span></span><br><span class="line"><span class="comment">// subtleties of Unicode.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CheckFilePath</span><span class="params">(path <span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> err := checkPath(path, <span class="literal">true</span>); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> fmt.Errorf(<span class="string">&quot;malformed file path %q: %v&quot;</span>, path, err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果非要支持带特殊字符的话，可以通过重新编译go二进制来实现。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://mrliu8023.github.io/2021/02/23/embed-in-go/" data-id="ckli6erdc00017ktl8h5l2ovn" data-title="embed in go" class="article-share-link">分享</a>
-      
-      
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/go/" rel="tag">go</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签</h3>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/go/" rel="tag">go</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">标签云</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/go/" style="font-size: 10px;">go</a>
-    </div>
-  </div>
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">归档</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">最新文章</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/02/23/Go-Memory-Model/">Go Memory Model</a>
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" data-toggle="modal" data-target="#modalSearch">&nbsp;<i
+                class="iconfont icon-search"></i>&nbsp;</a>
           </li>
         
-          <li>
-            <a href="/2021/02/23/embed-in-go/">embed in go</a>
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" href="javascript:">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
           </li>
         
       </ul>
     </div>
   </div>
+</nav>
 
-  
-</aside>
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="City of stars">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/23/Go-Memory-Model/">Go Memory Model</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/23/Go-Memory-Model/">
+          
+          
+            
+          
+          Go Memory Model介绍如何保证在一个goruntine中看到在另一个goroutine修改的变量的值
+如果程序中修改数据时有其他goroutine同时读取，那么必须将读取串行化。为了串行化访问，请使用channel或其他同步原语，例如sync和sync/atomic来保护数据。
+Happens Before在一个gouroutine中，读和写一定是按照程序中的顺序执行的。即编译器和处理
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-23 23:35" pubdate>
+              2021-02-23
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/go/">go</a>
+            
+          </div>
         
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 CatUnderCar<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
-    </div>
+    </article>
   </div>
-</footer>
 
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/2021/02/23/embed-in-go/">embed in go</a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/2021/02/23/embed-in-go/">
+          
+          
+            
+          
+          pkg embed in goembed包 提供了访问正在运行的go程序的功能。
+
+嵌入一个文件到string
+
+12345import _ &quot;embed&quot;//go:embed hello.txtvar s stringprint(s)
+
+
+嵌入一个文件到一个字节切片
+
+12345import _ &quot;embed&quot;//go:embed hello.txtvar
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2021-02-23 23:35" pubdate>
+              2021-02-23
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/go/">go</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     
 
+    
+      <a id="scroll-top-button" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
 
-<script src="/js/jquery-3.4.1.min.js"></script>
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+<!-- SCRIPTS -->
+
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/debouncer.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  
+    <script  src="/js/lazyload.js" ></script>
+  
 
 
 
   
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
 
 
 
 
 
-  </div>
+
+
+
+
+  <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2.0.6/dist/clipboard.min.js" ></script>
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+  <script  src="/js/local-search.js" ></script>
+  <script>
+    (function () {
+      var path = "/local-search.xml";
+      var inputArea = document.querySelector("#local-search-input");
+      inputArea.onclick = function () {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+        this.onclick = null
+      }
+    })()
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+
 </body>
 </html>
