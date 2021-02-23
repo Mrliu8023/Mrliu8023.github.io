@@ -6,16 +6,20 @@
   
   <title>CatUnderCar</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="go">
-<meta property="og:type" content="website">
+  <meta name="description" content="Go Memory Model介绍如何保证在一个goruntine中看到在另一个goroutine修改的变量的值 如果程序中修改数据时有其他goroutine同时读取，那么必须将读取串行化。为了串行化访问，请使用channel或其他同步原语，例如sync和sync&#x2F;atomic来保护数据。 Happens Before在一个gouroutine中，读和写一定是按照程序中的顺序执行的。即编译器和处理">
+<meta property="og:type" content="article">
 <meta property="og:title" content="CatUnderCar">
-<meta property="og:url" content="https://mrliu8023.github.io/index.html">
+<meta property="og:url" content="https://mrliu8023.github.io/2021/02/23/Go%20Memory%20Model/index.html">
 <meta property="og:site_name" content="CatUnderCar">
-<meta property="og:description" content="go">
+<meta property="og:description" content="Go Memory Model介绍如何保证在一个goruntine中看到在另一个goroutine修改的变量的值 如果程序中修改数据时有其他goroutine同时读取，那么必须将读取串行化。为了串行化访问，请使用channel或其他同步原语，例如sync和sync&#x2F;atomic来保护数据。 Happens Before在一个gouroutine中，读和写一定是按照程序中的顺序执行的。即编译器和处理">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="d:/go/src/CS-Study/pics/golang/Go-Memory-Model.png">
+<meta property="article:published_time" content="2021-02-23T15:29:58.418Z">
+<meta property="article:modified_time" content="2021-02-15T05:01:48.304Z">
 <meta property="article:author" content="CatUnderCar">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="d:/go/src/CS-Study/pics/golang/Go-Memory-Model.png">
   
     <link rel="alternate" href="/atom.xml" title="CatUnderCar" type="application/atom+xml">
   
@@ -76,134 +80,7 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-MESI协议" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/02/23/MESI%E5%8D%8F%E8%AE%AE/" class="article-date">
-  <time class="dt-published" datetime="2021-02-23T15:30:02.053Z" itemprop="datePublished">2021-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="MESI协议"><a href="#MESI协议" class="headerlink" title="MESI协议"></a>MESI协议</h1><p>MESI协议是基于失效机制的缓存一致性协议，并且是支持<em>回写（write-back）</em>缓存的最常用协议。</p>
-<p>也称为<em>Illinois Protocol。</em>与<em>写通过（write through）</em>相比，回写缓存能节约大量带宽。总是有“脏“（dirty）状态表示缓存中的数据与主存不同。MESI协议要求在缓存不命中（miss）且数据块在另一个缓存时，允许缓存到缓存的数据复制。与MSI协议相比，MESI协议减少了主存的事务数量，这极大的改善了性能。</p>
-<h2 id="状态"><a href="#状态" class="headerlink" title="状态"></a>状态</h2><p>缓存行有4种状态：</p>
-<ul>
-<li>M（modified）已修改状态</li>
-</ul>
-<p>缓存行是脏的（dirty），与主存的值不同。如果别的CPU内核要读主存这块数据，该缓存行必须回写到主存，状态变为共享（S）。</p>
-<ul>
-<li>E（exclusive）独占的</li>
-</ul>
-<p>缓存行只在当前缓存中，但是是干净的（clean）—缓存数据同于主存数据。当别的缓存读取它时，状态变为共享；当前写数据时，变为已修改状态。</p>
-<ul>
-<li>S（shared）共享的</li>
-</ul>
-<p>缓存行也存在其他缓存中且是干净的。缓存行可以在任意时刻抛弃。</p>
-<ul>
-<li>I（invalid）失效的</li>
-</ul>
-<p>缓存行是无效的。</p>
-<p>对于任意一对缓存，对应缓存行的相容关系</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>M</th>
-<th>E</th>
-<th>S</th>
-<th>I</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>M</td>
-<td>:x:</td>
-<td>:x:</td>
-<td>:x:</td>
-<td>:heavy_check_mark:</td>
-</tr>
-<tr>
-<td>E</td>
-<td>:x:</td>
-<td>:x:</td>
-<td>:x:</td>
-<td>:heavy_check_mark:</td>
-</tr>
-<tr>
-<td>S</td>
-<td>:x:</td>
-<td>:x:</td>
-<td>:heavy_check_mark:</td>
-<td>:heavy_check_mark:</td>
-</tr>
-<tr>
-<td>I</td>
-<td>:heavy_check_mark:</td>
-<td>:heavy_check_mark:</td>
-<td>:heavy_check_mark:</td>
-<td>:heavy_check_mark:</td>
-</tr>
-</tbody></table>
-<p>当缓存行标记为失效时，在其他缓存中的数据副本被标记为I（无效）。</p>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><p>有限状态自动机的状态转换结束两种场景：缓存所在处理器的读写；其他处理器的读写。总线请求被称为总线窥探器监视。</p>
-<p>处理器对缓存的请求：</p>
-<ol>
-<li>PrRd：处理器请求<strong>读</strong>一个缓存块</li>
-<li>PrWr：处理器请求<strong>写</strong>一个缓存块</li>
-</ol>
-<p>总线对缓存的请求：</p>
-<ol>
-<li>BusRd：监听到请求，表示当前有其它处理器正在发起对某个 Cache block 的读请求</li>
-<li>BusRdx：监听到请求，表示当前有其它处理器正在发起对某个其未拥有的 Cache block 的写请求</li>
-<li>BusUpgr： 监听到请求，表示有另一个处理器正在发起对某 Cache block 的写请求，该处理器已经持有此 Cache block 块</li>
-<li>Flush： 监听到请求，表示整个 cache 块已被另一个处理器写入到主存中</li>
-<li>FlushOpt： 监听到请求，表示一个完整的 cache 块已经被发送到总线，以提供给另一个处理器使用(Cache 到 Cache 传数)</li>
-</ol>
-<p>Cache 到 Cache 的传送可以降低 read miss 导致的延迟，如果不这样做，需要先将该 block 写回到主存，再读取，延迟会大大增加，在基于总线的系统中，这个结论是正确的。但在多核架构中，coherence 是在 L2 caches 这一级保证的，从 L3 中取可能要比从另一个 L2 中取还要快。</p>
-<p>mesi 协议解决了多核环境下，内存多层级带来的问题。使得 cache 层对于 CPU 来说可以认为是透明的，不存在的。单一地址的变量的写入，可以以线性的逻辑进行理解。</p>
-<p>但 mesi 协议有两个问题没有解决，一种是 RMW 操作，或者叫 CAS；一种是 ADD 操作。因为这两种操作都需要先读到原始值，进行修改，然后再写回到内存中。</p>
-<p>同时，在 CPU 架构中我们看到 CPU 除了 cache 这一层之外，还存在 store buffer，而 store buffer 导致的内存乱序问题，mesi 协议是解决不了的，这是 memory consistency 范畴讨论的问题。</p>
-<h2 id="store-buffer-和-invalidate-queue"><a href="#store-buffer-和-invalidate-queue" class="headerlink" title="store buffer 和 invalidate queue"></a><strong>store buffer 和 invalidate queue</strong></h2><blockquote>
-<p>Store Buffer：</p>
-</blockquote>
-<blockquote>
-<p>当写入到一行 invalidate 状态的 cache line 时便会使用到 store buffer。写如果要继续执行，CPU 需要先发出一条 read-invalid 消息(因为需要确保所有其它缓存了当前内存地址的 CPU 的 cache line 都被 invalidate 掉)，然后将写推入到 store buffer 中，当最终 cache line 达到当前 CPU 时再执行这个写操作。</p>
-</blockquote>
-<blockquote>
-<p>CPU 存在 store buffer 的直接影响是，当 CPU 提交一个写操作时，这个写操作不会立即写入到 cache 中。因而，无论什么时候 CPU 需要从 cache line 中读取，都需要先扫描它自己的 store buffer 来确认是否存在相同的 line，因为有可能当前 CPU 在这次操作之前曾经写入过 cache，但该数据还没有被刷入过 cache(之前的写操作还在 store buffer 中等待)。需要注意的是，虽然 CPU 可以读取其之前写入到 store buffer 中的值，但其它 CPU 并不能在该 CPU 将 store buffer 中的内容 flush 到 cache 之前看到这些值。即 store buffer 是不能跨核心访问的，CPU 核心看不到其它核心的 store buffer。</p>
-</blockquote>
-<blockquote>
-<p>Invalidate Queues：</p>
-</blockquote>
-<blockquote>
-<p>为了处理 invalidation 消息，CPU 实现了 invalidate queue，借以处理新达到的 invalidate 请求，在这些请求到达时，可以马上进行响应，但可以不马上处理。取而代之的，invalidation 消息只是会被推进一个 invalidation 队列，并在之后尽快处理(但不是马上)。因此，CPU 可能并不知道在它 cache 里的某个 cache line 是 invalid 状态的，因为 invalidation 队列包含有收到但还没有处理的 invalidation 消息，这是因为 CPU 和 invalidation 队列从物理上来讲是位于 cache 的两侧的。</p>
-</blockquote>
-<blockquote>
-<p>从结果上来讲，memory barrier 是必须的。一个 store barrier 会把 store buffer flush 掉，确保所有的写操作都被应用到 CPU 的 cache。一个 read barrier 会把 invalidation queue flush 掉，也就确保了其它 CPU 的写入对执行 flush 操作的当前这个 CPU 可见。再进一步，MMU 没有办法扫描 store buffer，会导致类似的问题。这种效果对于单线程处理器来说已经是会发生的了。</p>
-</blockquote>
-<p>因为前面提到的 store buffer 的存在，会导致多核心运行用户代码时，读和写以非程序顺序的顺序完成。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://mrliu8023.github.io/2021/02/23/MESI%E5%8D%8F%E8%AE%AE/" data-id="ckli60vmc0001l8tl51ac1lyq" data-title="" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-
-  
-    <article id="post-Go Memory Model" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-Go Memory Model" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <a href="/2021/02/23/Go%20Memory%20Model/" class="article-date">
   <time class="dt-published" datetime="2021-02-23T15:29:58.418Z" itemprop="datePublished">2021-02-23</time>
@@ -301,85 +178,28 @@
     </footer>
   </div>
   
-</article>
-
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-embed in go" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/02/23/embed%20in%20go/" class="article-date">
-  <time class="dt-published" datetime="2021-02-23T15:29:58.382Z" itemprop="datePublished">2021-02-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h1 id="pkg-embed-in-go"><a href="#pkg-embed-in-go" class="headerlink" title="pkg embed in go"></a>pkg embed in go</h1><p>embed包 提供了访问正在运行的go程序的功能。</p>
-<ul>
-<li>嵌入一个文件到string</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> _ <span class="string">&quot;embed&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//go:embed hello.txt</span></span><br><span class="line"><span class="keyword">var</span> s <span class="keyword">string</span></span><br><span class="line"><span class="built_in">print</span>(s)</span><br></pre></td></tr></table></figure>
+    <a href="/2021/02/23/MESI%E5%8D%8F%E8%AE%AE/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          (no title)
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/02/23/embed%20in%20go/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title"></div>
+    </a>
+  
+</nav>
 
-<ul>
-<li>嵌入一个文件到一个字节切片</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> _ <span class="string">&quot;embed&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//go:embed hello.txt</span></span><br><span class="line"><span class="keyword">var</span> b []<span class="keyword">byte</span></span><br><span class="line"><span class="built_in">print</span>(<span class="keyword">string</span>(b))</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>嵌入一个或多个文件作为一个文件系统</li>
-</ul>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&quot;embed&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//go:embed hello.txt</span></span><br><span class="line"><span class="keyword">var</span> f embed.FS</span><br><span class="line">data, _ := f.ReadFile(<span class="string">&quot;hello.txt&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="keyword">string</span>(data))</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="usage"><a href="#usage" class="headerlink" title="usage"></a>usage</h2><p>变量声明上面的<code>go:embed</code>指令使用一个或多个路径指定要嵌入的文件。匹配模式。</p>
-<p>该指令必须紧接在包含单个变量声明的行之前。 指令和声明之间仅允许使用<strong>空行</strong>和**<code>//</code>**行注释。</p>
-<p>变量的类型必须是这三种的其中一个<code>string</code>, <code>[]byte</code>, <code>FS</code>(或者FS的别名)。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> server</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;embed&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// content holds our static web server content.</span></span><br><span class="line"><span class="comment">//go:embed image/* template/*</span></span><br><span class="line"><span class="comment">//go:embed html/index.html</span></span><br><span class="line"><span class="keyword">var</span> content embed.FS</span><br></pre></td></tr></table></figure>
-
-<p><code>//go:embed</code>指令为简洁起见接受多个空格分隔的模式，但它也可以重复，以避免有许多模式时出现很长的行。模式是相对于包含源文件的包目录进行解释的。即使在windows上，路径分隔符也是<code>/</code>(forward slash)。模式不能包含<code>.</code>或<code>..</code>或空路径元素，也不能以<code>/</code>开头或者结尾。使用<code>*</code>来匹配当前路径下的所有内容。为了允许命名名称中有空格的文件，可以将模式写为Go的双引号<code>&quot;&quot;</code>或者反引号```` ``字符串文本</p>
-<p>如果一个模式命名为一个目录，则该目录下的子树中所有文件都将被递归嵌入，但是名称以<code>.</code>（隐藏文件）或<code>\</code>开头的文件除外。所以上面例子中的变量几乎等价于：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// content is our static web server content.</span></span><br><span class="line"><span class="comment">//go:embed image template html/index.html</span></span><br><span class="line"><span class="keyword">var</span> content embed.FS</span><br></pre></td></tr></table></figure>
-
-<p>区别就是<code>image/*</code>嵌入了<code>image/.tempfile</code>,但是<code>image</code>没有。</p>
-<p><code>//go:embed</code>指令可以与导出和未导出的变量一起使用，具体取决于软件包是否希望使数据可用于其他软件包。 它只能与程序包范围的全局变量一起使用，而<strong>不能与局部变量一起使用</strong>。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Partial</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="comment">//go:embed test.txt</span></span><br><span class="line">    vat a <span class="keyword">string</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编译将会报错：</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//go:embed only allowed in Go files that import &quot;embed&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>模式不得与包模块外部的文件匹配，例如<code> .git/*</code>或符号链接。 空目录的匹配将被忽略。 之后，<code>//go:embed</code>行中的每个模式必须至少匹配一个文件或非空目录。</p>
-<p>如果<strong>任何模式无效或匹配无效</strong>，则构建将失败。</p>
-<h3 id="File-System"><a href="#File-System" class="headerlink" title="File System"></a>File System</h3><p><code>FS</code>实现了<code>io/fs</code>包的<code>FS</code>接口，所以它能在任何理解文件系统的包内使用,包括<code>net/http</code>, <code>text/template</code>, 和<code>html/template</code>。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">http.Handle(<span class="string">&quot;/static/&quot;</span>,http.StripPrefix(<span class="string">&quot;/static/&quot;</span>,http.FileServer(http.FS(content))))</span><br><span class="line"></span><br><span class="line">template.ParseFS(content, <span class="string">&quot;*.tmpl&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<h2 id="无效模式"><a href="#无效模式" class="headerlink" title="无效模式"></a>无效模式</h2><p><a target="_blank" rel="noopener" href="https://github.com/golang/go/issues/44486">https://github.com/golang/go/issues/44486</a></p>
-<p>embed的有效文件名不能为<code>.git</code>, <code>.hg</code>, <code>.bzr</code>, <code>.svn</code>，并且不能包含<code>* &lt; &gt; ? ` &#39; | / \ : </code>等在某些Shell或操作系统中具有特殊含义的符号。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// isBadEmbedName reports whether name is the base name of a file that</span></span><br><span class="line"><span class="comment">// can&#x27;t or won&#x27;t be included in modules and therefore shouldn&#x27;t be treated</span></span><br><span class="line"><span class="comment">// as existing for embedding.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">isBadEmbedName</span><span class="params">(name <span class="keyword">string</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> err := module.CheckFilePath(name); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">switch</span> name &#123;</span><br><span class="line">	<span class="comment">// Empty string should be impossible but make it bad.</span></span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;&quot;</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	<span class="comment">// Version control directories won&#x27;t be present in module.</span></span><br><span class="line">	<span class="keyword">case</span> <span class="string">&quot;.bzr&quot;</span>, <span class="string">&quot;.hg&quot;</span>, <span class="string">&quot;.git&quot;</span>, <span class="string">&quot;.svn&quot;</span>:</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// CheckFilePath checks that a slash-separated file path is valid.</span></span><br><span class="line"><span class="comment">// The definition of a valid file path is the same as the definition</span></span><br><span class="line"><span class="comment">// of a valid import path except that the set of allowed characters is larger:</span></span><br><span class="line"><span class="comment">// all Unicode letters, ASCII digits, the ASCII space character (U+0020),</span></span><br><span class="line"><span class="comment">// and the ASCII punctuation characters</span></span><br><span class="line"><span class="comment">// “!#$%&amp;()+,-.=@[]^_&#123;&#125;~”.</span></span><br><span class="line"><span class="comment">// (The excluded punctuation characters, &quot; * &lt; &gt; ? ` &#x27; | / \ and :,</span></span><br><span class="line"><span class="comment">// have special meanings in certain shells or operating systems.)</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// CheckFilePath may be less restrictive in the future, but see the</span></span><br><span class="line"><span class="comment">// top-level package documentation for additional information about</span></span><br><span class="line"><span class="comment">// subtleties of Unicode.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">CheckFilePath</span><span class="params">(path <span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> err := checkPath(path, <span class="literal">true</span>); err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> fmt.Errorf(<span class="string">&quot;malformed file path %q: %v&quot;</span>, path, err)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>如果非要支持带特殊字符的话，可以通过重新编译go二进制来实现。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://mrliu8023.github.io/2021/02/23/embed%20in%20go/" data-id="ckli60vmd0002l8tlb4ikg0v2" data-title="" class="article-share-link">分享</a>
-      
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-
-  
 
 
 </section>
